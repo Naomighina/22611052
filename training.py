@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the dataset
-data = pd.read_csv('C:/Kuliah/Semester 4/Modern Prediction & Machine Learning/UAS/transactions.csv')
+data = pd.read_csv('C:/Kuliah/Semester4/MPML/UAS/transactions.csv')
 
 # Encoding label
 label_encoder = LabelEncoder()
