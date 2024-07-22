@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 
-data = pd.read_csv(r'C:\Kuliah\Semester4\MPML\UAS\transactions.csv')
+data = pd.read_csv(r'C:\UASMPML\transactions.csv')
 
 # Periksa nilai hilang
 print("Nilai hilang per kolom:")

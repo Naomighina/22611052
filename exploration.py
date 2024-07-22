@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Muat dataset (pastikan path file Anda disesuaikan)
-data = pd.read_csv(r'C:\Kuliah\Semester4\MPML\UAS\transactions.csv')
+data = pd.read_csv(r'C:\UASMPML\transactions.csv')
 
 # Inspeksi Data
 print(data.info())  # Periksa tipe data dan nilai hilang
