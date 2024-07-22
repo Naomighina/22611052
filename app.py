@@ -35,7 +35,11 @@ fig, ax = plt.subplots()
 sns.scatterplot(x='Amount (INR)', y='Timestamp', data=data, ax=ax)
 st.pyplot(fig)
 
-correlation_matrix = data.corr()
-fig, ax = plt.subplots()
-sns.heatmap(correlation_matrix, annot=True, ax=ax)
-st.pyplot(fig)
+# Memilih hanya kolom numerik
+numerical_data = data.select_dtypes(include=['float64', 'int64'])
+
+# Menghitung matriks korelasi
+correlation_matrix = numerical_data.corr()
+
+# Menampilkan matriks korelasi
+print(correlation_matrix)
