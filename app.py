@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the preprocessed data
-data = pd.read_csv('C:\UASHEALTHMPML\Health index.csv')
+data = pd.read_csv('Health index.csv')
 
 
 # Title
