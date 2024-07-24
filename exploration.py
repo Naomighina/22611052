@@ -1,40 +1,33 @@
+# exploration.py
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Muat dataset (pastikan path file Anda disesuaikan)
-data = pd.read_csv(r'C:\UASMPML\transactions.csv')
+# Load the dataset
+data = pd.read_csv(r'C:\UASHEALTHMPML\Health index.csv')
 
-# Inspeksi Data
-print(data.info())  # Periksa tipe data dan nilai hilang
-print(data.describe())  # Statistik deskriptif untuk kolom numerik
+# Inspect the data
+print(data.info())
+print(data.describe())
 
-# Analisis Univariat
-# Variabel numerik
-sns.histplot(data['Amount (INR)'], bins=30)
-plt.show()
-sns.boxplot(x=data['Amount (INR)'])
-plt.show()
-
-# Variabel kategorik
-sns.countplot(x='Status', data=data)
+# Univariate Analysis
+# Numerical Variables
+sns.histplot(data['Health_index'], bins=30)
+plt.title('Distribution of Health Index')
 plt.show()
 
-# Analisis Bivariat
-sns.scatterplot(x='Amount (INR)', y='Timestamp', data=data)
+sns.boxplot(x=data['Health_index'])
+plt.title('Boxplot of Health Index')
 plt.show()
+
+# Bivariate Analysis
+sns.scatterplot(x='Health_index', y='Life_expectation', data=data)
+plt.title('Health Index vs Life Expectation')
+plt.show()
+
+# Correlation Matrix
 correlation_matrix = data.corr()
 sns.heatmap(correlation_matrix, annot=True)
+plt.title('Correlation Matrix')
 plt.show()
-
-# Analisis Deret Waktu (jika berlaku)
-# Konversi timestamp ke format datetime
-data['Timestamp'] = pd.to_datetime(data['Timestamp'])
-# Kelompokkan data berdasarkan periode waktu (misalnya, hari, bulan, tahun) dan hitung agregat
-# Visualisasikan menggunakan plot garis
-
-# Pembersihan dan Praproses Data (jika perlu)
-# Tangani nilai hilang (misalnya, imputasi, penghapusan)
-# Tangani outlier (misalnya, capping, flooring, penghapusan)
-# Atasi inkonsistensi dalam data (misalnya, konversi tipe data, pemformatan)

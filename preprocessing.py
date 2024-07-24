@@ -1,40 +1,23 @@
+# preprocessing.py
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.preprocessing import StandardScaler
 
-data = pd.read_csv(r'C:\UASMPML\transactions.csv')
+data = pd.read_csv(r'C:\UASHEALTHMPML\Health index.csv')
 
-# Periksa nilai hilang
-print("Nilai hilang per kolom:")
+# Check for missing values
+print("Missing values per column:")
 print(data.isnull().sum())
 
-# Tangani nilai hilang (ganti dengan strategi yang sesuai)
-# Misalnya, mengisi kolom numerik dengan rata-rata atau median
-# data['Amount (INR)'].fillna(data['Amount (INR)'].mean(), inplace=True)
+# Handle missing values (if any)
+# Example: Impute with mean
+# data.fillna(data.mean(), inplace=True)
 
-# Untuk kolom kategorik, pertimbangkan imputasi modus atau membuat kategori baru
-
-# Buat objek LabelEncoder
-label_encoder = LabelEncoder()
-for col in ['Transaction ID', 'Sender Name', 'Sender UPI ID', 'Receiver Name', 'Receiver UPI ID', 'Status']:
-    data[col] = label_encoder.fit_transform(data[col])
-data = data.drop(columns=['Timestamp'])
-
-# Kodekan kolom kategorik
-data['Sender Name'] = label_encoder.fit_transform(data['Sender Name'])
-data['Sender UPI ID'] = label_encoder.fit_transform(data['Sender UPI ID'])
-data['Receiver Name'] = label_encoder.fit_transform(data['Receiver Name'])
-data['Receiver UPI ID'] = label_encoder.fit_transform(data['Receiver UPI ID'])
-data['Status'] = label_encoder.fit_transform(data['Status'])
-
-# Buat objek StandardScaler
+# Scaling numerical features
 scaler = StandardScaler()
+scaled_columns = ['Hydrogen', 'Oxigen', 'Nitrogen', 'Methane', 'CO', 'CO2', 'Ethylene', 'Ethane', 'Acethylene', 'DBDS', 'Power_factor', 'Interfacial_V', 'Dielectric_rigidity', 'Water_content']
+data[scaled_columns] = scaler.fit_transform(data[scaled_columns])
 
-# Skala fitur numerik (jika diperlukan)
-# data['Amount (INR)'] = scaler.fit_transform(data[['Amount (INR)']])
-print("\nTipe data setelah preprocessing:")
+print("\nData types after preprocessing:")
 print(data.dtypes)
 
-data_scaled = data
-
-data['target'] = np.random.rand(len(data))
