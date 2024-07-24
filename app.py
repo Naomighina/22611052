@@ -63,9 +63,3 @@ model_dt = DecisionTreeRegressor(random_state=42)
 model_rf = RandomForestRegressor(random_state=42)
 
 
-# Display predictions
-st.subheader('Predictions')
-st.write('Ridge Regression:', pred_ridge[0])
-st.write('Lasso Regression:', pred_lasso[0])
-st.write('Decision Tree:', pred_dt[0])
-st.write('Random Forest:', pred_rf[0])
