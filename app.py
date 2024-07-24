@@ -62,28 +62,6 @@ model_lasso = Lasso(random_state=42)
 model_dt = DecisionTreeRegressor(random_state=42)
 model_rf = RandomForestRegressor(random_state=42)
 
-# Hyperparameter tuning using GridSearchCV
-param_grid_ridge = {'alpha': [0.01, 0.1, 1, 10, 100]}
-param_grid_lasso = {'alpha': [0.01, 0.1, 1, 10, 100]}
-param_grid_dt = {'max_depth': [None, 10, 20, 30, 40, 50], 'min_samples_split': [2, 5, 10]}
-param_grid_rf = {'n_estimators': [10, 50, 100, 200], 'max_depth': [None, 10, 20, 30], 'min_samples_split': [2, 5, 10]}
-
-grid_ridge = GridSearchCV(model_ridge, param_grid_ridge, cv=5, scoring='r2')
-grid_lasso = GridSearchCV(model_lasso, param_grid_lasso, cv=5, scoring='r2')
-grid_dt = GridSearchCV(model_dt, param_grid_dt, cv=5, scoring='r2')
-grid_rf = GridSearchCV(model_rf, param_grid_rf, cv=5, scoring='r2')
-
-# Fit models
-grid_ridge.fit(X_train, y_train)
-grid_lasso.fit(X_train, y_train)
-grid_dt.fit(X_train, y_train)
-grid_rf.fit(X_train, y_train)
-
-# Get best estimators
-best_ridge = grid_ridge.best_estimator_
-best_lasso = grid_lasso.best_estimator_
-best_dt = grid_dt.best_estimator_
-best_rf = grid_rf.best_estimator_
 
 # Display predictions
 st.subheader('Predictions')
